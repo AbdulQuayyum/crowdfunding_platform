@@ -10,13 +10,11 @@ import "./Styles/Index.css"
 const container = document.getElementById("root");
 const root = createRoot(container);
 root.render(
-  <React.StrictMode>
-    <ThirdwebProvider desiredChainId={ChainId.Goerli}>
-      <Router>
-        <StateContextProvider>
-          <App />
-        </StateContextProvider>
-      </Router>
-    </ThirdwebProvider>
-  </React.StrictMode>
+  <ThirdwebProvider desiredChainId={ChainId.Goerli}>
+    <Router>
+      <StateContextProvider>
+        <App />
+      </StateContextProvider>
+    </Router>
+  </ThirdwebProvider>
 )

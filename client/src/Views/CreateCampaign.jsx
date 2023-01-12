@@ -17,7 +17,7 @@ const CreateCampaign = () => {
     description: '',
     target: '',
     deadline: '',
-    image: ''
+    image: '',
   })
 
   const handleFormFieldChange = (fieldName, e) => {

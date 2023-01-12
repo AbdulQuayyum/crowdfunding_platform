@@ -2,16 +2,16 @@
 pragma solidity ^0.8.9;
 
 contract Crowdfunding {
-    struct Campaign {
+  struct Campaign {
         address owner;
-        string description;
-        string image;
-        uint256 target;
         string title;
-        uint256 amountCollected;
+        string description;
+        uint256 target;
         uint256 deadline;
-        uint256[] donations;
+        uint256 amountCollected;
+        string image;
         address[] donators;
+        uint256[] donations;
     }
 
     mapping(uint256 => Campaign) public campaigns;

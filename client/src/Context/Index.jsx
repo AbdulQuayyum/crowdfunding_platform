@@ -23,9 +23,9 @@ export const StateContextProvider = ({ children }) => {
                 form.image
             ])
 
-            console.log("Contracy call was succesful", data)
+            console.log("contract call success", data)
         } catch (error) {
-            console.log("Contract call was unsuccessful", error)
+            console.log("contract call failure", error)
         }
     }
 
@@ -76,22 +76,23 @@ export const StateContextProvider = ({ children }) => {
         return parsedDonations
     }
 
+
     return (
-        <StateContext.Provider 
-        value={{
-            address,
-            contract,
-            connect,
-            createCampaign: publishCampaign,
-            donate,
-            getCampaigns,
-            getDonations,
-            getUserCampaigns
-        }}>
+        <StateContext.Provider
+            value={{
+                address,
+                contract,
+                connect,
+                createCampaign: publishCampaign,
+                getCampaigns,
+                getUserCampaigns,
+                donate,
+                getDonations
+            }}
+        >
             {children}
         </StateContext.Provider>
     )
-
 }
 
 export const useStateContext = () => useContext(StateContext)

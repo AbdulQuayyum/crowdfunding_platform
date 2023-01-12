@@ -59,9 +59,9 @@ const Navbar = () => {
                 key={link.name}
                 className={`flex p-4 ${isActive === link.name && 'bg-[#3a3a43]'}`}
                 onClick={() => {
-                  setIsActive(link.name)
-                  setToggleDrawer(false)
-                  navigate(link.link)
+                  setIsActive(link.name);
+                  setToggleDrawer(false);
+                  navigate(link.link);
                 }}
               >
                 <img
@@ -80,10 +80,10 @@ const Navbar = () => {
             <CustomButton
               btnType="button"
               title={address ? 'Create a campaign' : 'Connect'}
-              styles={address ? 'bg-[#1dc071]' : "bg-[#2c2f32]"}
+              styles={address ? 'bg-[#1dc071]' : 'bg-[#8c6dfd]'}
               handleClick={() => {
-                if (address) navigate('createCampaign')
-                else connect()
+                if (address) navigate('create-campaign')
+                else connect();
               }}
             />
           </div>
