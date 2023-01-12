@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'
 
+import { useStateContext } from '../Context/Index'
 import { CustomButton } from "./Index"
-import { Logo2, menu, search, thirdweb } from '../Assets/Index';
+import { Logo2, menu, search, thirdweb } from '../Assets/Index'
 import { navlinks } from "../Constants/Index"
 
 const Navbar = () => {
-  const navigate = useNavigate();
-  const [isActive, setIsActive] = useState('dashboard');
-  const [toggleDrawer, setToggleDrawer] = useState(false);
+  const navigate = useNavigate()
+  const [isActive, setIsActive] = useState('dashboard')
+  const [toggleDrawer, setToggleDrawer] = useState(false)
+  const { connect, address } = useStateContext()
   return (
     <div className="flex md:flex-row flex-col-reverse justify-between mb-[35px] gap-6">
       <div className="lg:flex-1 flex flex-row max-w-[458px] py-2 pl-4 pr-2 h-[52px] bg-[#1c1c24] rounded-[100px]">
@@ -22,12 +24,12 @@ const Navbar = () => {
       <div className="flex-row justify-end hidden gap-4 sm:flex">
         <CustomButton
           btnType="button"
-        // title={address ? 'Create a campaign' : 'Connect'}
-        // styles={address ? 'bg-[#1dc071]' : 'bg-[#8c6dfd]'}
-        // handleClick={() => {
-        //   if(address) navigate('createCampaign')
-        //   else connect()
-        // }}
+          title={address ? 'Create a campaign' : 'Connect'}
+          styles={address ? 'bg-[#1dc071]' : 'bg-[#2c2f32]'}
+          handleClick={() => {
+            if (address) navigate('createCampaign')
+            else connect()
+          }}
         />
 
         <Link to="/Profile">
@@ -57,9 +59,9 @@ const Navbar = () => {
                 key={link.name}
                 className={`flex p-4 ${isActive === link.name && 'bg-[#3a3a43]'}`}
                 onClick={() => {
-                  setIsActive(link.name);
-                  setToggleDrawer(false);
-                  navigate(link.link);
+                  setIsActive(link.name)
+                  setToggleDrawer(false)
+                  navigate(link.link)
                 }}
               >
                 <img
@@ -77,12 +79,12 @@ const Navbar = () => {
           <div className="flex mx-4">
             <CustomButton
               btnType="button"
-            // title={address ? 'Create a campaign' : 'Connect'}
-            // styles={address ? 'bg-[#1dc071]' : 'bg-[#8c6dfd]'}
-            // handleClick={() => {
-            //   if(address) navigate('createCampaign')
-            //   else connect();
-            // }}
+              title={address ? 'Create a campaign' : 'Connect'}
+              styles={address ? 'bg-[#1dc071]' : "bg-[#2c2f32]"}
+              handleClick={() => {
+                if (address) navigate('createCampaign')
+                else connect()
+              }}
             />
           </div>
         </div>
