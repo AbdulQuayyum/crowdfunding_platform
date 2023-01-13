@@ -6,7 +6,7 @@ import { EditionMetadataWithOwnerOutputSchema } from '@thirdweb-dev/sdk'
 const StateContext = createContext()
 
 export const StateContextProvider = ({ children }) => {
-    const { contract } = useContract("0x9d7fd648689Df40bb5D19264A043B2c22DbF76EF")
+    const { contract } = useContract('0x9d7fd648689Df40bb5D19264A043B2c22DbF76EF')
     const { mutateAsync: createCampaign } = useContractWrite(contract, 'createCampaign')
 
     const address = useAddress()
@@ -30,7 +30,7 @@ export const StateContextProvider = ({ children }) => {
     }
 
     const getCampaigns = async () => {
-        const campaigns = await contract.call('getCampaigns')
+        const campaigns = await contract.call('getCampaigns');
 
         const parsedCampaings = campaigns.map((campaign, i) => ({
             owner: campaign.owner,
@@ -41,30 +41,30 @@ export const StateContextProvider = ({ children }) => {
             amountCollected: ethers.utils.formatEther(campaign.amountCollected.toString()),
             image: campaign.image,
             pId: i
-        }))
+        }));
 
-        return parsedCampaings
+        return parsedCampaings;
     }
 
     const getUserCampaigns = async () => {
-        const allCampaigns = await getCampaigns()
+        const allCampaigns = await getCampaigns();
 
-        const filteredCampaigns = allCampaigns.filter((campaign) => campaign.owner === address)
+        const filteredCampaigns = allCampaigns.filter((campaign) => campaign.owner === address);
 
-        return filteredCampaigns
+        return filteredCampaigns;
     }
 
     const donate = async (pId, amount) => {
-        const data = await contract.call('donateToCampaign', pId, { value: ethers.utils.parseEther(amount) })
+        const data = await contract.call('donateToCampaign', pId, { value: ethers.utils.parseEther(amount) });
 
-        return data
+        return data;
     }
 
     const getDonations = async (pId) => {
-        const donations = await contract.call('getDonators', pId)
-        const numberOfDonations = donations[0].length
+        const donations = await contract.call('getDonators', pId);
+        const numberOfDonations = donations[0].length;
 
-        const parsedDonations = []
+        const parsedDonations = [];
 
         for (let i = 0; i < numberOfDonations; i++) {
             parsedDonations.push({
@@ -73,9 +73,8 @@ export const StateContextProvider = ({ children }) => {
             })
         }
 
-        return parsedDonations
+        return parsedDonations;
     }
-
 
     return (
         <StateContext.Provider
